@@ -52,3 +52,4 @@ writeRaster(chm04, 'chm04.tif') #load chm into QGIS: Check offset in comp. to or
 # -> R 
 # Fehler beheben:
 # Height normalization
+ #TEST
