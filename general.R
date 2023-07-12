@@ -2,7 +2,8 @@ library(terra)
 library(lidR)
 
 
-maindir <- "/home/lehnert/Nextcloud/Lehre/2022_SoSe_Pr_Datenanalyse/data"
+#maindir <- "/home/lehnert/Nextcloud/Lehre/2022_SoSe_Pr_Datenanalyse/data"
+maindir = 'C:/Users/paule/Desktop/p6/'
 # 1. Terra
 # - spielen Multispektral
 # - shapefile aus den plots erstellen
@@ -27,7 +28,7 @@ writeVector(fd_shp, file.path(maindir, "20230707_EDNX_fieldData.shp")
 
 # 2. lidR
 las04 = readLAS(file.path(maindir, "20230422_EDNX_viehtraenke.laz"))
-
+las07 = readLAS(file.path(maindir, "20230707_EDNX_viehtraenke.laz"))
 #print header
 print(las04)
 
@@ -37,7 +38,7 @@ hist(las04$Z) # Check for points above trees
 
 
 #plot whole area 
-plot(las, axis = TRUE, bg = 'white')
+plot(las07, axis = TRUE, bg = 'white')
 
 
 # - CHM rechnen
