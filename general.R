@@ -41,7 +41,9 @@ plot(las, axis = TRUE, bg = 'white')
 
 
 # - CHM rechnen
-chm04 = rasterite_
+chm04 = rasterite_canopy(las04, res = 0.1, algorithm = p2r(0.1))
+plot(chm04)
+writeRaster(chm04, 'chm04.tif') #load chm into QGIS: Check offset in comp. to ortho
 # - DTM rechnen 
 # - export als raster
 ## -> QGIS
