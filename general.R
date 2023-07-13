@@ -9,6 +9,24 @@ library(lidR)
 # course outline
 #----------------------------------------------------------------------
 
+# all on small extent
+
+# TERRA part
+# 1. slides on terra
+# 2. read multispectral data and the rgb orthophoto
+# 3. do some plots
+# 4. create shapefiles of the respective west and east plots from the coordinates in the google docs
+# (5. learn how to cut rasters with shape files)
+
+# LidR part
+# 1. slides on LidR
+# 2. import data, check structure and see how .las / .laz are composed
+# 3. plot data
+# 4. ITD (segmentation), DTM, CHM
+# 5. export to raster 
+
+
+
 #----------------------------------------------------------------------
 # morning part
 #----------------------------------------------------------------------
