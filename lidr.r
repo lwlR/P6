@@ -33,29 +33,8 @@ library(dbscan)
 #----------------------------------------------------------------------
 # morning part
 #----------------------------------------------------------------------
-
-
+maindir <- "/data/teaching/MasterP6/data_ednx"
 maindir = 'W:/daten_p6'
-# 1. Terra
-# - spielen Multispektral
-# - shapefile aus den plots erstellen
-# Read orthophoto in R
-orth <- rast(file.path(maindir, "20230707_EDNX-ortho.tif"))
-# Get summary of file
-orth
-# Create a first plot
-plotRGB(orth)
-# Vector data
-# Load table with field measurements
-fd <- read.csv("fielddata.csv")#
-# Create shapefile from field measurements
-fd_shp <- vect(fd, geom=c("lon", "lat"), crs="", keepgeom=FALSE) # Needs to be updated with the correct columns names and crs
-# Plot field data above orthophoto
-plotRGB(orth)
-plot(fd_shp, add = TRUE, col = "darkred")
-# Save shapefile to disc
-writeVector(fd_shp, file.path(maindir, "20230707_EDNX_fieldData.shp")
-
 
 
 # 2. lidR
@@ -75,14 +54,14 @@ plot(las07)
 # - CHM rechnen
 chm07 = rasterize_canopy(las07, res = 0.1, algorithm = p2r(0.1))
 plot(chm07)
-writeRaster(chm07, file.path(maindir, 'chm07.tif')) #load chm into QGIS: Check offset in comp. to ortho
+writeRaster(chm07, file.path(maindir, 'chm07.tif'), filetype = "COG") #load chm into QGIS: Check offset in comp. to ortho
 
 #correct offset
 las07@data$X = las07@data$X - 2.6 #für 07
 las07@data$Y = las07@data$Y - 0.3 #für 07
 
-chm07 = rasterite_canopy(las07, res = 0.1, algorithm = p2r(0.1))
-writeRaster(chm07, file.path(maindir, 'chm07_corr1.tif'))  #load chm into QGIS: Check offset in comp. to ortho
+chm07 = rasterize_canopy(las07, res = 0.1, algorithm = p2r(0.1))
+writeRaster(chm07, file.path(maindir, 'chm07_corr1.tif'), filetype = "COG")  #load chm into QGIS: Check offset in comp. to ortho
 
 #Height normalization
 las07@data$Classification = 0
@@ -90,7 +69,7 @@ las07 = classify_ground(las07, algorithm = csf())
 dtm07 = rasterize_terrain(las07, res = 0.5, algorithm = tin())
 
 plot(dtm07)
-writeRaster(dtm07, file.path(maindir, 'dtm07.tif'))  #load chm into QGIS: Was fällt auf?
+writeRaster(dtm07, file.path(maindir, 'dtm07.tif'), filetype = "COG")  #load chm into QGIS: Was fällt auf?
 
 las07 = las07 - dtm07
 
