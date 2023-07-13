@@ -11,6 +11,7 @@ library(lidR)
 
 # all on small extent
 
+
 # TERRA part
 # 1. slides on terra
 # 2. read multispectral data and the rgb orthophoto
