@@ -232,4 +232,4 @@ dbh_plot_ost_04$geometry = dbh_plot_ost_04$geometry + c(0.8,1.5)
 st_write(dbh_plot_ost_04, file.path(maindir, 'dbh_plot_ost_04_cor.shp'), append = FALSE)
 
 
-plot(filter_poi(las07_plot_ost, treeID == 9), bg = 'white', size = 5)
+#plot(filter_poi(las07_plot_ost, treeID == 9), bg = 'white', size = 5)
