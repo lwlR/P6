@@ -3,6 +3,17 @@ library(lidR)
 
 
 #maindir <- "/home/lehnert/Nextcloud/Lehre/2022_SoSe_Pr_Datenanalyse/data"
+
+
+#----------------------------------------------------------------------
+# course outline
+#----------------------------------------------------------------------
+
+#----------------------------------------------------------------------
+# morning part
+#----------------------------------------------------------------------
+
+
 maindir = 'C:/Users/paule/Desktop/p6/'
 # 1. Terra
 # - spielen Multispektral
@@ -53,4 +64,9 @@ writeRaster(chm04, 'chm04.tif') #load chm into QGIS: Check offset in comp. to or
 # -> R 
 # Fehler beheben:
 # Height normalization
- #TEST
+#TEST
+
+
+#----------------------------------------------------------------------
+# afternoon part
+#----------------------------------------------------------------------
