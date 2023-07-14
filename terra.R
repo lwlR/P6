@@ -33,14 +33,17 @@ plot(gps_points, add = TRUE, col = "lightgray")
 fd <- read.csv(file.path(maindir, "fielddata.csv"))#
 fd_shp <- merge(x = gps_points, y = fd, by = "Name", all.x = T, all.y = T)
 
+fd_shp <- vect(file.path("/data/teaching/MasterP6/data_ednx/", "stonex_dbh_joined.shp"))
+fd_shp[,4] <- as.numeric(as.data.frame(fd_shp)[,4])
+fd_shp_d <- as.data.frame(fd_shp)
 
 #fd_shp <- vect(fd, geom=c("lat", "lon"), crs=crs(orth), keepgeom=FALSE) # Needs to be updated with the correct columns names and crs
 # Plot field data above orthophoto
 plotRGB(orth)
-for (i in 1:nrow(fd_shp))
+for (i in 1:nrow(fd_shp_d))
 {
-    if (is.finite(fd_shp$dbh[i]))
-       points(fd_shp[i,], col = "lightgray", cex = 1.3*fd_shp$dbh[i])
+    if (is.finite(fd_shp_d[i,4]))
+       points(fd_shp[i,], col = "lightgray", cex = 1.8*fd_shp_d[i,4])
 }
 
 # Save shapefile to disc

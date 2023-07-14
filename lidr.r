@@ -38,7 +38,7 @@ maindir = 'W:/daten_p6'
 
 
 # 2. lidR
-las07 = readLAS(file.path(maindir, "20230707_EDNX_viehtraenke.laz"))
+las07 = readLAS(file.path(maindir, "20230707_EDNX_ext_full.laz"))
 #print header
 print(las07)
 
@@ -61,7 +61,7 @@ las07@data$X = las07@data$X - 2.6 #für 07
 las07@data$Y = las07@data$Y - 0.3 #für 07
 
 chm07 = rasterize_canopy(las07, res = 0.1, algorithm = p2r(0.1))
-writeRaster(chm07, file.path(maindir, 'chm07_corr1.tif'), filetype = "COG")  #load chm into QGIS: Check offset in comp. to ortho
+writeRaster(chm07, file.path(maindir, 'chm07_corr1.tif'), filetype = "COG", overwrite = TRUE)  #load chm into QGIS: Check offset in comp. to ortho
 
 #Height normalization
 las07@data$Classification = 0
@@ -69,7 +69,7 @@ las07 = classify_ground(las07, algorithm = csf())
 dtm07 = rasterize_terrain(las07, res = 0.5, algorithm = tin())
 
 plot(dtm07)
-writeRaster(dtm07, file.path(maindir, 'dtm07.tif'), filetype = "COG")  #load chm into QGIS: Was fällt auf?
+writeRaster(dtm07, file.path(maindir, 'dtm07.tif'), filetype = "COG", overwrite = TRUE)  #load chm into QGIS: Was fällt auf?
 
 las07 = las07 - dtm07
 
@@ -94,7 +94,7 @@ metrics07 = crown_metrics(las07, .stdmetrics, geom = 'convex')
 plot(metrics07['area'])
 
 #export to QGIS
-st_write(metrics07, file.path(maindir, "20230707_viehtranke_metrics.shp"), append = FALSE)
+writeVector(vect(metrics07), file.path(maindir, "20230707_viehtranke_metrics.shp"), overwrite = TRUE)
 
 #crown metrics und plote bäume über identify -> Stamm nicht da!!!!
 
