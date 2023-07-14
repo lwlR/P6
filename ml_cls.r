@@ -99,4 +99,7 @@ lid_m$b3_ms_sd <- tapply(px_dat_ms$"multispectral_crop_3", px_dat_ms$ID, sd, na.
 lid_m$b4_ms_sd <- tapply(px_dat_ms$"multispectral_crop_4", px_dat_ms$ID, sd, na.rm = TRUE)
 lid_m$b5_ms_sd <- tapply(px_dat_ms$"multispectral_crop_5", px_dat_ms$ID, sd, na.rm = TRUE)
 
-decidous <- predict(mod_trained, lid_m)
+lid_m$decidous <- predict(mod_trained, lid_m)
+lid_m$species  <- predict(mod_trained_s, lid_m)
+
+writeVector(lid_m, file.path(maindir,"tree_cls.shp"), overwrite = TRUE)
