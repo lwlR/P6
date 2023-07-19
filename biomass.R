@@ -1,4 +1,4 @@
-install.packages("httpgd")
+#install.packages("httpgd")
 
 library(lidR)
 library(terra)
@@ -18,3 +18,5 @@ dop_east = rast(file.path(path, "20230707_EDNX_ortho_ext_plot_east.tif"))
 
 window()
 plotRGB(dop_east)
+
+#test for steffi 
